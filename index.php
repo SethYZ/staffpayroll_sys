@@ -5,7 +5,6 @@
 <head>
   <title>Staff Payroll Management System</title>
   <link rel="stylesheet" href="mainstylesheet.css">
-  <script src="myscript.js"></script>
 </head>
 
 <body>
@@ -16,7 +15,7 @@
       <h1> Welcome to Staff Payroll Management System </h1>
 
       <div class="startinginfo">
-        <br><br><p>Start Managing your staff's payrolls</p><br><br>
+        <br><br><p>Start Managing your staff's/your's payroll</p><br><br>
         <a href="registerform.php"><input type="button" class="button registerbtn" value="Register"/></a>
       </div>
 

@@ -1,4 +1,4 @@
-<?php include('serverconfig.php') ?>
+<?php include('serverconfig.php'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@
       <div class="passworddiv">
         <label><b>Password:</b></label>
         <input type="password" name="password_1" class="inputinfo" placeholder="PASSWORD"/>
-        <label><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Confirm Password:</b></label>
+        <label><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspConfirm Password:</b></label>
         <input type="password" name="password_2" class="confirmpassinput" placeholder="PASSWORD"/><br><br>
       </div>
 
@@ -49,6 +49,11 @@
           <option value="finance">Finance</option>
           <option value="marketing">Marketing</option>
         </select>
+
+        <label><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  Position:</b></label>
+        <input type="text" name="position" class="positioninput"
+        value="<?php echo $position; ?>" placeholder="POSITION"/><br><br>
 
       </div>
 

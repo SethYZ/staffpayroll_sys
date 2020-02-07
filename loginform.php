@@ -1,4 +1,4 @@
-<?php  ?>
+<?php include('serverconfig.php'); ?>
 
 <!DOCTYPE html>
 
@@ -13,8 +13,8 @@
   <div class="mainstyling">
     <center><h2>Login</h2></center><br>
 
-  <form class="loginform" action="loginprocess.php" method="post">
-
+  <form class="loginform" action="loginform.php" method="post">
+    <?php include('errors.php'); ?>
       <label><b>Username:</b></label><br>
       <input type="text" name="username" class="inputinfo" placeholder="USERNAME"/><br><br>
 
