@@ -1,0 +1,231 @@
+/*styling for index.php part*/
+
+body{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  background-position: center;
+  font-family: sans-serif;
+}
+
+p{
+  margin: 5%;
+  font-weight: bold;
+  color: black;
+}
+
+#login_div{
+  position: absolute;
+  top: 25px;
+  right: 32px;
+}
+
+.background{
+    background-image: url(image/payroll.jpg);
+    background-position: center;
+    background-size: 97% 95%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border: 2px solid black;
+}
+
+.maininfobox{
+  text-align: center;
+  width: 650px;
+  height: 650px;
+  margin: 0 auto;
+  background-size: 60% 60%;
+  background-color: white;
+  border: 1px solid black;
+  opacity: 0.4;
+}
+
+.maininfobox h1{
+  color: black;
+  font-weight: bold;
+  border-style: solid;
+}
+
+.contactinfo{
+    margin: 0 auto;
+    font-size: 25px;
+    position:fixed;
+    width:45%;
+    bottom:120px;
+    text-align:center;
+}
+
+.startinginfo{
+  font-size: 25px;
+  opacity: 1;
+}
+
+.button {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.loginbtn{
+  width: 100px;
+  height: 25px;
+  background-color: grey;
+  color: white;
+}
+
+.loginbtn:hover{
+  color: black;
+  background-color: #53DEDE;
+}
+
+.registerbtn{
+  font-size: 18px;
+  background-color: black;
+  width: 120px;
+  height: 40px;
+  background-color: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  border-width: medium;
+  color: white;
+}
+
+.registerbtn:hover{
+  color: black;
+  background-color: #4cd137;
+}
+
+/*LoginPage Styling*/
+
+#loginbtn{
+  margin-top: 20px;
+  margin-bottom: 15px;
+  background-color: #3498db;
+  width: 200px;
+  height: 35px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#returnbtn{
+  margin-bottom: 15px;
+  background-color: #f39c12;
+  width: 140px;
+  height: 30px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input::placeholder{
+  text-align: center;
+}
+
+.mainstyling{
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 120px;
+  background: white;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.loginform{
+  width: 400px;
+  margin: 0 auto;
+}
+
+.inputinfo{
+  width: 220px;
+  height: 25px;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+/*RegisterForm Styling*/
+
+#registerbtn{
+  margin-top: 35px;
+  margin-bottom: 15px;
+  background-color: #3498db;
+  width: 200px;
+  height: 35px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.registerpage{
+  width: 1200px;
+  margin: 0 auto;
+  background: white;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.registerform{
+  width: 900px;
+  margin: 0 auto;
+}
+
+.namediv{
+  display: inline-block;
+}
+
+.passworddiv{
+  display: inline-block;
+  text-align: left;
+  margin-left: 70px;
+}
+
+.departmentdiv{
+  text-align: left;
+  margin-left: 90px;
+}
+
+.usernamediv{
+  text-align: left;
+  margin-left: 100px;
+}
+
+.usernameinput{
+  width: 220px;
+  height: 25px;
+  padding: 5px;
+}
+
+.confirmpassinput{
+  width: 240px;
+  height: 35px;
+}
+
+.departmentinput{
+  width: 220px;
+  height: 40px;
+  font-size: 16px;
+}
+
+/* Styling error */
+
+.error{
+  text-align: left;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background-color: #ff7675;
+  color: black;
+  max-width: 300px;
+  max-height: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 12px;
+}
