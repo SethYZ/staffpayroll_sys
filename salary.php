@@ -8,7 +8,6 @@
   <title>Welcome Page</title>
   <link rel="stylesheet" href="mainstylesheet.css">
   <script src="https://kit.fontawesome.com/58fb0d3b26.js"></script>
-
   </script>
 </head>
 
@@ -44,7 +43,10 @@
 
     </div>
 
-    <div class="">
+    <div class="salarydiv">
+
+    </div>
+
 
       <?php if(isset($_SESSION["username"])): ?>
           <div class="logoutdiv">
@@ -55,7 +57,6 @@
       <?php endif ?>
 
           </div>
-  </div>
 
 </body>
 
