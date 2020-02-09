@@ -15,6 +15,17 @@ include('serverconfig.php');
 
 <body>
 
+  <?php if (isset($_SESSION['request_sent'])): ?>
+    <div class="requestsuccess">
+        <?php
+          echo '<script type="text/javascript"> window.onload = function(){
+                  alert("Request Sent.");}
+                </script>';
+          unset($_SESSION['request_sent']);
+         ?>
+    </div>
+  <?php endif ?>
+
   <div class="homepagebackground">
     <div class="content">
 
@@ -29,7 +40,7 @@ include('serverconfig.php');
           <ul>
             <li><a href="homepage.php"><i class="fas fa-home"></i>Home</a></li>
             <li><a href="salary.php"><i class="fas fa-money-check-alt"></i>Salary</a></li>
-            <li><a href="#"><i class="fas fa-tasks"></i>Request Status</a></li>
+            <li><a href="request.php"><i class="fas fa-tasks"></i>Request Status</a></li>
           </ul>
       </div>
 
@@ -52,7 +63,7 @@ include('serverconfig.php');
 
         <div class="basicrequestsalarydiv">
           <label><b>Basic salary:</b></label>
-          <input type="text" name="basicsalary" class="basicsalaryinput" value="<?php print $_SESSION['basic_salary']; ?>"/><br>
+          <input type="text" name="basicsalary" class="basicsalaryinput" value="<?php echo $_SESSION['basic_salary']; ?>"/><br>
         </div>
 
         <div class="resetsubmitbtndiv">

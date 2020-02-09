@@ -5,7 +5,7 @@
 <html>
 
 <head>
-  <title>Welcome Page</title>
+  <title>Request Status</title>
   <link rel="stylesheet" href="mainstylesheet.css">
   <script src="https://kit.fontawesome.com/58fb0d3b26.js"></script>
 
@@ -28,13 +28,12 @@
           <ul>
             <li><a href="homepage.php"><i class="fas fa-home"></i>Home</a></li>
             <li><a href="salary.php"><i class="fas fa-money-check-alt"></i>Salary</a></li>
-            <li><a href="#"><i class="fas fa-tasks"></i>Request Status</a></li>
+            <li><a href="request.php"><i class="fas fa-tasks"></i>Request Status</a></li>
           </ul>
       </div>
     </div>
   </div>
 
-    <div class="">
 
       <?php if(isset($_SESSION["username"])): ?>
           <div class="logoutdiv">
@@ -45,7 +44,6 @@
       <?php endif ?>
 
           </div>
-  </div>
 
 </body>
 

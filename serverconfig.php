@@ -120,7 +120,6 @@
 
     if(isset($_GET['logout'])) {
       session_destroy();
-      unset($_SESSION['username']);
       header('location: index.php');
     }
 
@@ -143,10 +142,10 @@
 
     if (count($errors) == 0) {
         $basic_salary = $hours_worked * $wageperhour;
-        $_SESSION['basic_salary'] = $basic_salary;
 
-        $querysalary = "UPDATE salary SET basic_salary = '$basic_salary'";
+        $querysalary = "UPDATE salary SET current_basic_salary = '$basic_salary'";
         mysqli_query($link1, $querysalary);
+        $_SESSION['basic_salary'] = $basic_salary;
 
         header('refresh:1; url=salary.php');
     }
@@ -157,17 +156,33 @@
   if(isset($_POST['requestbutton'])){
     $amountrequest = $_POST['requestamount'];
 
-    if (empty($amountrequest)) {
-      array_push($errors, "Amount Requested is required");
+    if (empty($amountrequest) || (!is_numeric($amountrequest))) {
+      array_push($errors, "Amount Requested/Number is required");
     }
 
     if (count($errors) == 0) {
 
+      $newbasic_salary = $_SESSION['basic_salary'];
+
+      if ($_SESSION['basic_salary'] > $amountrequest){
+          $requeststatus = "success";
+      }
+      else{
+          $requeststatus = "failed";
+      }
+
         $_SESSION['capnum']++;
 
-        $amountrequestquery = ("INSERT INTO salary (ref_id, username, basic_salary, requestamount)
-                                VALUES ('". $_SESSION['capnum'] ."', '". $_SESSION['username'] ."', '". $_SESSION['basic_salary'] ."', '$amountrequest')");
+          if ($requeststatus == "success"){
+              $_SESSION['basic_salary'] = $_SESSION['basic_salary'] - $amountrequest;
+          }
+
+        $amountrequestquery = ("INSERT INTO salary (ref_id, username, current_basic_salary, requestamount, requeststatus)
+                                VALUES ('". $_SESSION['capnum'] ."', '". $_SESSION['username'] ."', '". $_SESSION['basic_salary'] ."',
+                                  '$amountrequest', '$requeststatus')");
         mysqli_query($link1, $amountrequestquery);
+
+        $_SESSION['request_sent'] = "requestout.";
 
         header('refresh:1; url=salary.php');
     }
