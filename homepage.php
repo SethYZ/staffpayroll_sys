@@ -14,35 +14,25 @@
 
 <body>
 
-  <div class="content">
+  <div class="homepagebackground">
 
-    <?php if (isset($_SESSION['success'])): ?>
-      <div class="error success">
-        <h3>
-          <?php
-            echo $_SESSION['success'];
-            unset($_SESSION['success']);
-           ?>
-        </h3>
+    <div class="content">
+      <input type="checkbox" id="check"/>
+      <label for="check">
+        <i class="fas fa-bars" id="menubtn"></i>
+          <i class="fas fa-times" id="cancelbtn"></i>
+        </label>
+
+      <div class="sidebar">
+          <header>Payroll System</header>
+          <ul>
+            <li><a href="homepage.php"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="salary.php"><i class="fas fa-money-check-alt"></i>Salary</a></li>
+            <li><a href="#"><i class="fas fa-tasks"></i>Request Status</a></li>
+          </ul>
       </div>
-    <?php endif ?>
-
-    <input type="checkbox" id="check"/>
-    <label for="check">
-      <i class="fas fa-bars" id="menubtn"></i>
-        <i class="fas fa-times" id="cancelbtn"></i>
-      </label>
-
-    <div class="sidebar">
-        <header>Payroll System</header>
-        <ul>
-          <li><a href="homepage.php"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="salary.php"><i class="fas fa-money-check-alt"></i>Salary</a></li>
-          <li><a href="#"><i class="fas fa-tasks"></i>Request Status</a></li>
-        </ul>
     </div>
-
-    </div>
+  </div>
 
     <div class="">
 

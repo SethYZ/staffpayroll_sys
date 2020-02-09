@@ -5,6 +5,12 @@
   $lastname = "";
   $username = "";
   $position = "";
+  $_SESSION['capnum'] = ((isset($_SESSION['capnum'])) ? $_SESSION['capnum'] : 0);
+
+  $_SESSION['basic_salary'] = isset($_SESSION['basic_salary']) ? $_SESSION['basic_salary'] : "0";
+
+  // Set default value
+  $_SESSION['amountrequest'] = isset($_SESSION['amountrequest']) ? $_SESSION['amountrequest'] : "0";
   $errors = array();
 
 
@@ -69,23 +75,21 @@
 
     // If there is no errors then save the information into the database.
       if(count($errors) == 0){
-        $registeruser = "INSERT INTO users (username, password)
-                          VALUES ('$username', '$password_1')";
-        mysqli_query($link1, $registeruser);
 
-        $registeremployeeinfo = "INSERT INTO employeeinfo (firstname, lastname, department, position)
-                                  VALUES ('$firstname', '$lastname', '$department', '$position')";
+        $registeremployeeinfo = "INSERT INTO employeeinfo (firstname, lastname, department, position
+                                ,username, password)
+                                  VALUES ('$firstname', '$lastname', '$department', '$position',
+                                '$username', '$password_1')";
         mysqli_query($link1, $registeremployeeinfo);
 
-        $_SESSION['username'] = $username;
         $_SESSION['success'] = "Registration completed!";
 
-        header('location: homepage.php');
-
+        header('location: index.php');
       }
   }
 
   // If Login button is pressed
+
 
   if (isset($_POST['loginbutton'])) {
     $username = mysqli_real_escape_string($link1, $_POST['username']);
@@ -99,10 +103,12 @@
     }
 
     if (count($errors) == 0) {
-    	$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    	$query = "SELECT * FROM employeeinfo WHERE username='$username' AND password='$password'";
     	$loginresult = mysqli_query($link1, $query);
     	if (mysqli_num_rows($loginresult) == 1) {
-    	  $_SESSION['username'] = $username;
+
+        $_SESSION['username'] = $username;
+
     	  header('location: homepage.php');
     	}else {
     		array_push($errors, "Wrong username/password combination");
@@ -118,4 +124,55 @@
       header('location: index.php');
     }
 
+  // Calculate salary
+
+  $hours_worked = "";
+  $wageperhour = "";
+
+  if(isset($_POST['updatesalarybutton'])){
+    $hours_worked = $_POST['hours_worked'];
+    $wageperhour = $_POST['wageperhour'];
+
+    if (empty($hours_worked) || (!is_numeric($hours_worked))) {
+      array_push($errors, "Hours Worked/Number is required");
+    }
+
+    if (empty($wageperhour) || (!is_numeric($wageperhour))) {
+      array_push($errors, "Wage per Hour/Number is required");
+    }
+
+    if (count($errors) == 0) {
+        $basic_salary = $hours_worked * $wageperhour;
+        $_SESSION['basic_salary'] = $basic_salary;
+
+        $querysalary = "UPDATE salary SET basic_salary = '$basic_salary'";
+        mysqli_query($link1, $querysalary);
+
+        header('refresh:1; url=salary.php');
+    }
+  }
+
+  // When request button is pressed
+
+  if(isset($_POST['requestbutton'])){
+    $amountrequest = $_POST['requestamount'];
+
+    if (empty($amountrequest)) {
+      array_push($errors, "Amount Requested is required");
+    }
+
+    if (count($errors) == 0) {
+
+        $_SESSION['capnum']++;
+
+        $amountrequestquery = ("INSERT INTO salary (ref_id, username, basic_salary, requestamount)
+                                VALUES ('". $_SESSION['capnum'] ."', '". $_SESSION['username'] ."', '". $_SESSION['basic_salary'] ."', '$amountrequest')");
+        mysqli_query($link1, $amountrequestquery);
+
+        header('refresh:1; url=salary.php');
+    }
+
+  }
+
+mysqli_close($link1);
 ?>

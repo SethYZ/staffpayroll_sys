@@ -1,4 +1,5 @@
 <?php include('serverconfig.php'); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +9,17 @@
 </head>
 
 <body>
+
+  <?php if (isset($_SESSION['success'])): ?>
+    <div class="registersuccess">
+      <h3>
+        <?php
+          echo $_SESSION['success'];
+          unset($_SESSION['success']);
+         ?>
+      </h3>
+    </div>
+  <?php endif ?>
 
   <div class="background">
     <div class="maininfobox">
@@ -24,10 +36,11 @@
       </div>
 
     </div>
-  </div>
 
-  <div id="login_div">
-    <a href="loginform.php"><input type="button" class="button loginbtn" value="Login"/></a>
+    <div id="login_div">
+      <a href="loginform.php"><input type="button" class="button loginbtn" value="Login"/></a>
+    </div>
+
   </div>
 
 </body>

@@ -1,11 +1,13 @@
-<?php include('serverconfig.php'); ?>
+<?php
+include('serverconfig.php');
+ ?>
 
 <!DOCTYPE HTML>
 
 <html>
 
 <head>
-  <title>Welcome Page</title>
+  <title>Payroll Page</title>
   <link rel="stylesheet" href="mainstylesheet.css">
   <script src="https://kit.fontawesome.com/58fb0d3b26.js"></script>
   </script>
@@ -13,18 +15,8 @@
 
 <body>
 
-  <div class="content">
-
-    <?php if (isset($_SESSION['success'])): ?>
-      <div class="error success">
-        <h3>
-          <?php
-            echo $_SESSION['success'];
-            unset($_SESSION['success']);
-           ?>
-        </h3>
-      </div>
-    <?php endif ?>
+  <div class="homepagebackground">
+    <div class="content">
 
     <input type="checkbox" id="check"/>
     <label for="check">
@@ -32,21 +24,51 @@
         <i class="fas fa-times" id="cancelbtn"></i>
       </label>
 
-    <div class="sidebar">
-        <header>Payroll System</header>
-        <ul>
-          <li><a href="homepage.php"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="salary.php"><i class="fas fa-money-check-alt"></i>Salary</a></li>
-          <li><a href="#"><i class="fas fa-tasks"></i>Request Status</a></li>
-        </ul>
-    </div>
-
-    </div>
+      <div class="sidebar">
+          <header>Payroll System</header>
+          <ul>
+            <li><a href="homepage.php"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="salary.php"><i class="fas fa-money-check-alt"></i>Salary</a></li>
+            <li><a href="#"><i class="fas fa-tasks"></i>Request Status</a></li>
+          </ul>
+      </div>
 
     <div class="salarydiv">
+      <br><br><header>
+        <h2>Salary Page</h2>
+      </header>
 
+      <form class="salaryform" action="salary.php" method="post">
+
+      <!-- Display Error validation -->
+      <?php include('errors.php'); ?>
+
+        <div class="hours_workedwagesdiv">
+          <label><b>Hours Worked:</b></label>
+          <input type="text" name="hours_worked" class="hours_workedinput" placeholder="HOURS_WORKED"/>
+          <label><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWage Rate(RM):</b></label>
+          <input type="text" name="wageperhour" class="wagesinput" placeholder="WAGES RATE"/><br>
+        </div>
+
+        <div class="basicrequestsalarydiv">
+          <label><b>Basic salary:</b></label>
+          <input type="text" name="basicsalary" class="basicsalaryinput" value="<?php print $_SESSION['basic_salary']; ?>"/><br>
+        </div>
+
+        <div class="resetsubmitbtndiv">
+          <input type="reset" id="resetbtn" name="resetsalarybutton" value="Reset"/>
+          <input type="submit" id="updatebtn" name="updatesalarybutton" value="Update"/><br>
+        </div>
+
+        <div class="requestsalarydiv">
+          <h2 style="border: solid">Request Salary</h2><br>
+          <label><b>Amount to be requested:</b></label>
+          <input type="text" name="requestamount" class="reqeuestsalaryinput"/><br>
+          <input type="submit" id="requestbtn" name="requestbutton" value="Confirm"/>
+        </div>
+
+          </form>
     </div>
-
 
       <?php if(isset($_SESSION["username"])): ?>
           <div class="logoutdiv">
@@ -57,6 +79,8 @@
       <?php endif ?>
 
           </div>
+        </div>
+      </div>
 
 </body>
 

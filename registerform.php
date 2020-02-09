@@ -7,7 +7,6 @@
   <br><br>
   <title>Register Here</title>
   <link rel="stylesheet" href="mainstylesheet.css">
-  <script src="myscript.js"></script>
 
 </head>
 

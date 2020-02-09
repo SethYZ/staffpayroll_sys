@@ -50,10 +50,10 @@ p{
 .contactinfo{
     margin: 0 auto;
     font-size: 25px;
-    position:fixed;
-    width:45%;
-    bottom:120px;
-    text-align:center;
+    position: fixed;
+    width: 45%;
+    bottom: 120px;
+    text-align: center;
 }
 
 .startinginfo{
@@ -238,6 +238,29 @@ input::placeholder{
 
 /* styling home page */
 
+#updatebtn{
+  background-color: #53DEDE;
+  border-color: #74b9ff;
+  width: 140px;
+  height: 35px;
+}
+
+#resetbtn{
+  background-color: #53DEDE;
+  border-color: #74b9ff;
+  width: 140px;
+  height: 35px;
+}
+
+#requestbtn{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #53DEDE;
+  border-color: #74b9ff;
+  width: 120px;
+  height: 35px;
+}
+
 #check{
   display: none;
 }
@@ -280,6 +303,64 @@ label #cancelbtn{
 
 #check:checked ~ label #cancelbtn{
   left: 195px;
+}
+
+.homepagebackground{
+  background: url(image/homepage_background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 120vh;
+  transition: all .5s;
+}
+
+.resetsubmitbtndiv{
+  display: inline-block;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.salarydiv{
+  color: white;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.salarydiv header{
+  box-sizing: border-box;
+  border: double;
+  font-size: 18px;
+}
+
+.salaryform{
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.hours_workedinput{
+  width: 200px;
+  height: 30px;
+}
+
+.wagesinput{
+  width: 200px;
+  height: 30px;
+}
+
+.basicsalaryinput{
+  width: 150px;
+  height: 30px;
+  font-size: 16px;
+}
+
+.basicrequestsalarydiv{
+  margin-top: 40px;
+}
+
+.reqeuestsalaryinput{
+  width: 150px;
+  height: 30px;
+  font-size: 16px;
 }
 
 .sidebar{
@@ -334,6 +415,16 @@ ul li:hover a{
   position: absolute;
   top: 10px;
   right: 0;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 10px;
+}
+
+.logoutdiv p{
+  color: white;
+  font-size: 18px;
+}
+
+.registersuccess{
+  text-align: center;
+  font-size: 18px;
 }
