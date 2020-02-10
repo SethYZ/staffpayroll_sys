@@ -37,12 +37,11 @@ include('serverconfig.php');
           $conn = mysqli_connect('localhost', 'root', '', 'employee');
 
           // Write Query here
-          $getdataquery = "SELECT * FROM salary";
+          $getdataquery = "SELECT * FROM salary WHERE username = '{$_SESSION['username']}' ";
 
           // Execute the Query
           $getdataresult = mysqli_query($conn, $getdataquery) or die( mysqli_error($conn));
 
-          $table_format = "id='primarytable'";
       ?>
 
 
