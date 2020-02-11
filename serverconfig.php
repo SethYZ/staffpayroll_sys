@@ -129,19 +129,33 @@
   $wageperhour = "";
 
   if(isset($_POST['updatesalarybutton'])){
-    $hours_worked = $_POST['hours_worked'];
-    $wageperhour = $_POST['wageperhour'];
 
-    if (empty($hours_worked) || (!is_numeric($hours_worked))) {
-      array_push($errors, "Hours Worked/Number is required");
+    if (empty($_POST['basicsalary'])){
+
+      $hours_worked = $_POST['hours_worked'];
+      $wageperhour = $_POST['wageperhour'];
+
+      if (empty($hours_worked) || (!is_numeric($hours_worked))) {
+        array_push($errors, "Hours Worked/Number is required");
+      }
+
+      if (empty($wageperhour) || (!is_numeric($wageperhour))) {
+        array_push($errors, "Wage per Hour/Number is required");
+      }
+
+      $basic_salary = $hours_worked * $wageperhour;
     }
 
-    if (empty($wageperhour) || (!is_numeric($wageperhour))) {
-      array_push($errors, "Wage per Hour/Number is required");
+    else if (!empty($_POST['basicsalary'])) {
+      if (!is_numeric($_POST['basicsalary'])){
+        array_push($errors, "Basic Salary/Number is required");
+      }
+      else{
+        $basic_salary = $_POST['basicsalary'];
+      }
     }
 
     if (count($errors) == 0) {
-        $basic_salary = $hours_worked * $wageperhour;
 
         $querysalary = "UPDATE salary SET current_basic_salary = '$basic_salary'";
         mysqli_query($link1, $querysalary);
