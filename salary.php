@@ -62,7 +62,9 @@ include('serverconfig.php');
         </div>
 
         <div class="basicrequestsalarydiv">
-          <label><b>Basic salary:</b></label>
+          <label><b>Update salary(+/-):</b></label>
+          <input type="text" name="updatesalary" class="basicsalaryinput"/>
+          <label><b>Current salary:</b></label>
           <input type="text" name="basicsalary" class="basicsalaryinput" value="<?php echo $_SESSION['basic_salary']; ?>"/><br>
         </div>
 

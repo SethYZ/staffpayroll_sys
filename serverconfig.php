@@ -130,7 +130,7 @@
 
   if(isset($_POST['updatesalarybutton'])){
 
-    if (empty($_POST['basicsalary'])){
+    if (empty($_POST['updatesalary'])){
 
       $hours_worked = $_POST['hours_worked'];
       $wageperhour = $_POST['wageperhour'];
@@ -143,23 +143,28 @@
         array_push($errors, "Wage per Hour/Number is required");
       }
 
-      $basic_salary = $hours_worked * $wageperhour;
+      $_SESSION['basic_salary'] = $hours_worked * $wageperhour;
     }
 
-    else if (!empty($_POST['basicsalary'])) {
-      if (!is_numeric($_POST['basicsalary'])){
-        array_push($errors, "Basic Salary/Number is required");
+    else if (!empty($_POST['updatesalary'])) {
+
+      if(!is_numeric($_POST['updatesalary'])){
+        array_push($errors, "Number is required");
       }
-      else{
-        $basic_salary = $_POST['basicsalary'];
+
+      else if ($_POST['updatesalary'] > 0) {
+        $_SESSION['basic_salary'] = $_SESSION['basic_salary'] + $_POST['updatesalary'];
+      }
+
+      else if ($_POST['updatesalary'] < 0) {
+        $_SESSION['basic_salary'] = $_SESSION['basic_salary'] - $_POST['updatesalary'];
       }
     }
 
     if (count($errors) == 0) {
 
-        $querysalary = "UPDATE salary SET current_basic_salary = '$basic_salary'";
+        $querysalary = "UPDATE salary SET current_basic_salary = ".$_SESSION['basic_salary'];
         mysqli_query($link1, $querysalary);
-        $_SESSION['basic_salary'] = $basic_salary;
 
         header('refresh:1; url=salary.php');
     }
